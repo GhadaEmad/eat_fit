@@ -7,7 +7,6 @@ import 'package:be_happy/fetures/shopping_list_Page/ui/shopping_list_page_screen
 import 'package:flutter/material.dart';
 
 import '../../../core/widjets/custom_bottom_nav_bar.dart';
-import '../../../core/widjets/settings_menu_button.dart';
 
 class LoseWeightPlanScreen extends StatefulWidget {
   const LoseWeightPlanScreen({super.key});
@@ -31,20 +30,10 @@ class _LoseWeightPlanScreenState extends State<LoseWeightPlanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       appBar: CustomAppBar(title: "Lose Weight Plan",backgroundColor:AppColors.secondaryColor ,iconColor: Colors.white,),
 
-      body: Stack(
-        children: [
-          pages[currentIndex],
-
-          Positioned(
-            top: 10,
-            right: 16,
-            child: const SettingsMenuButton(),
-          ),
-        ],
-      ),
-
+      body: pages[currentIndex],
 
 
       bottomNavigationBar: CustomBottomNavBar(

@@ -28,7 +28,7 @@ class AccountScreen extends StatelessWidget {
                   right: 0,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.deepPurple,
+                      color: Colors.green,
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(

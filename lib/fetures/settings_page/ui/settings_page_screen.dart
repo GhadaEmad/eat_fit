@@ -26,8 +26,7 @@ class SettingsPageScreen extends StatelessWidget {
               }
               ),
               const SizedBox(height: 12),
-              CustomCard(icon: Icons.lock, titel: "Privacy", onTap: (){}),
-              const SizedBox(height: 12),
+
               CustomCard(icon: Icons.dark_mode, titel: "Dark Mode", onTap: (){}),
               const SizedBox(height: 12),
               CustomCard(icon: Icons.language, titel: "Change Language", onTap: (){
