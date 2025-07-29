@@ -16,24 +16,26 @@ class MealCard extends StatelessWidget {
        Navigator.pushReplacementNamed(context, '/meal_details');
       },
       child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
           width: 180,
           padding: EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('$meal.imageUrl', height: 100, width: double.infinity, fit: BoxFit.cover),
+              Center(child: Text(meal.type!, style: TextStyle(fontWeight: FontWeight.bold))),
+              Image.asset(meal.imageUrl!, height: 120, width: double.infinity, fit: BoxFit.cover),
+              SizedBox(height: 10),
+              Text(meal.name!, style: TextStyle(fontWeight: FontWeight.bold)),
               SizedBox(height: 8),
-              Text('$meal.name', style: TextStyle(fontWeight: FontWeight.bold)),
               Text('${meal.calories} Cal'),
-              Spacer(),
+              SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
 
                   Navigator.pushReplacementNamed(context, '/meal_details');
                 },
-                child: Text('عرض التفاصيل'),
+                child: Text('meal_details'),
               )
             ],
           ),

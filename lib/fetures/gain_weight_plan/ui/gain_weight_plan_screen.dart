@@ -20,9 +20,8 @@ class _GainWeightPlanScreenState extends State<GainWeightPlanScreen> {
 
   final List<Widget> pages = [
     PlanPageScreen(),
-
-    ShoppingListPageScreen(),
     MealsPageScreen(),
+    ShoppingListPageScreen(),
     SettingsPageScreen(),
 
   ];

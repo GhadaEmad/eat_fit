@@ -7,8 +7,8 @@ import '../data/meal_model.dart';
 
 class PlanPageScreen extends StatelessWidget {
   final List<String> days = [
-    'السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'
-  ];//ليه عملنا الجزء ده
+    'Wednesday', 'Thursday ', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class PlanPageScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Dealy Meals', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            Center(child: Text('Daily Meals', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
             SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
@@ -35,7 +35,7 @@ class PlanPageScreen extends StatelessWidget {
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: 230,
+                        height: 300,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: mealsOfDay.length,
