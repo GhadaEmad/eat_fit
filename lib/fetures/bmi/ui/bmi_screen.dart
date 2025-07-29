@@ -144,11 +144,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                 ),
 
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>ResultScreen(weight:weight ,
-                    height: sliderValue,
-                    age: age,)));
-                }, child: Text("Calculate",style: TextStyle(fontSize: 20),),),
+                  onPressed: () {
+                    if (isMale == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Please select your gender')),
+                      );
+                      return;
+                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ResultScreen(
+                          weight: weight,
+                          height: sliderValue,
+                          age: age,
+                        ),
+                      ),
+                    );
+                  },
+                   child: Text("Calculate",style: TextStyle(fontSize: 20),),),
             ],
           ),
         ),

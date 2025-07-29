@@ -1,12 +1,13 @@
 import 'package:be_happy/core/helpers/extension.dart';
 import 'package:be_happy/core/widjets/button_with_titel.dart';
 import 'package:be_happy/core/widjets/text_form_field_with_titel.dart';
+import 'package:be_happy/fetures/creat_account/cubit/creat_account_cubit.dart';
 import 'package:be_happy/fetures/log_in/ui/log_in_screen.dart';
 import 'package:be_happy/fetures/bmi/ui/bmi_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:be_happy/core/helpers/google_sign_in_helper.dart'; // مسار الملف بتاع تسجيل Google
-
+import 'package:be_happy/core/helpers/google_sign_in_helper.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 class CreatAccountScreen extends StatefulWidget {
   const CreatAccountScreen({super.key});
 
@@ -106,55 +107,46 @@ class _CreatAccountScreenState extends State<CreatAccountScreen> {
                     },
                   ),
                   const SizedBox(height: 20),
-                  ButtonWithTitel(
-                    titel: "Create Account",
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
+                  BlocListener<CreatAccountCubit, CreatAccountState>(
+                    listener: (context, state) {
+                      if (state is CreatAccountLouding) {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (context) => const AlertDialog(
+                            backgroundColor: Colors.transparent,
+                            content: LinearProgressIndicator(),
+                          ),
+                        );
+                      }
+
+                      if (state is CreatAccountScecc) {
+                        Navigator.pop(context); // إغلاق الـ Dialog
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Account created successfully")),
+                        );
                         Navigator.pushReplacementNamed(context, '/bmi');
                       }
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  const Center(child: Text("or")),
-                  const SizedBox(height: 10),
 
-                  /// 🔴 زر تسجيل بجوجل
-                  ElevatedButton.icon(
-                    icon: Image.asset(
-                      'assets/image/Google__G__logo.png',
-                      height: 24,
-                      width: 24,
-                    ),
-                    label: const Text('Sign up with Google'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.black87,
-                      minimumSize: const Size(double.infinity, 50),
-                      side: const BorderSide(color: Colors.green),
-                    ),
-                    onPressed: () async {
-                      final userCredential = await GoogleSignInHelper.signInWithGoogle();
-                      if (userCredential != null) {
-                        Navigator.pushReplacementNamed(context, '/bmi');
+                      if (state is CreatAccountError) {
+                        Navigator.pop(context); // إغلاق الـ Dialog
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(state.errorMessage)),
+                        );
                       }
                     },
-                  ),
-
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Already have an Account?"),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushReplacementNamed(context, '/log_in');
-                        },
-                        child: const Text(
-                          " login",
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      )
-                    ],
+                    child: ButtonWithTitel(
+                      titel: "Create Account",
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<CreatAccountCubit>().createUserWithEmailAndPassword(
+                            email: emailController.text.trim(),
+                            password: passwordController.text,
+                            name: nameController.text.trim(),
+                          );
+                        }
+                      },
+                    ),
                   )
                 ],
               ),

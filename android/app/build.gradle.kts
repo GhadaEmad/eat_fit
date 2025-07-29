@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.be_happy"
+    namespace = "com.example.eat_fit"
     compileSdk = flutter.compileSdkVersion
 
 
