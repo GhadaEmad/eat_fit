@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/widjets/meal_card.dart';
-import '../data/meal_model.dart';
+import '../../meals_page/data/meal_model.dart';
 
 class PlanPageScreen extends StatelessWidget {
   final List<String> days = [
@@ -26,7 +26,7 @@ class PlanPageScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   String currentDay = days[index];
                   List<MealModel> mealsOfDay = allMeals.where((m) => m.day == currentDay).toList();
-//الجزء ده معناه ايه فى الكود
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

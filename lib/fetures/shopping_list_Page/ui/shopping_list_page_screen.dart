@@ -2,24 +2,19 @@
 
 import 'package:flutter/material.dart';
 
+import '../data/shopping_items.dart';
+
 class ShoppingListPageScreen extends StatelessWidget {
   const ShoppingListPageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     // قائمة ثابتة مؤقتًا (placeholder)
-    final List<String> shoppingItems = [
-      'بيض',
-      'خس',
-      'طماطم',
-      'شوفان',
-      'لبن',
-      'خبز توست',
-    ];
+
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🛒 قائمة المشتريات'),
+        title: const Text('🛒 Shopping list'),
         centerTitle: true,
       ),
       body: Padding(
@@ -28,7 +23,7 @@ class ShoppingListPageScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'المكونات المطلوبة:',
+              'Required ingredients:',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),

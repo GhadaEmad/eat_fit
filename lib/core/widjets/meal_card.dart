@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../fetures/plan_page/data/meal_model.dart';
+import '../../fetures/meals_page/data/meal_model.dart';
 
 class MealCard extends StatelessWidget {
   final MealModel meal;
@@ -13,7 +13,7 @@ class MealCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-       Navigator.pushReplacementNamed(context, '/meal_details');
+       Navigator.pushNamed(context, '/meal_details',arguments: meal);
       },
       child: Card(
         margin: EdgeInsets.symmetric(horizontal: 10),
@@ -33,7 +33,8 @@ class MealCard extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
 
-                  Navigator.pushReplacementNamed(context, '/meal_details');
+                  Navigator.pushNamed(context, '/meal_details',arguments: meal,);
+
                 },
                 child: Text('meal_details'),
               )

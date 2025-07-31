@@ -24,7 +24,7 @@ final List<MealModel> allMeals = [
   MealModel(name: 'Nuts', type: 'Snacks', day: 'Monday', calories: 100, imageUrl: 'assets/image/Snacks.jpg'),
   MealModel(name: 'Boiled eggs + salad + slice of toast', type: 'Breakfast', day: 'Tuesday', calories: 150, imageUrl: 'assets/image/breakfast.jpg'),
   MealModel(name: 'Meat + rice with vegetables', type: 'Lunch', day: 'Tuesday', calories: 400, imageUrl: 'assets/image/lunch.jpg'),
-  MealModel(name: 'Banana oatmeal', type: 'Dinner', day: 'Tusday', calories: 200, imageUrl: 'assets/image/dinner.jpg'),
+  MealModel(name: 'Banana oatmeal', type: 'Dinner', day: 'Tuesday', calories: 200, imageUrl: 'assets/image/dinner.jpg'),
   MealModel(name: 'Nuts', type: 'Snacks', day: 'Tuesday', calories: 100, imageUrl: 'assets/image/Snacks.jpg'),
   MealModel(name: 'Boiled eggs + salad + slice of toast', type: 'Breakfast', day: 'Wednesday', calories: 150, imageUrl: 'assets/image/breakfast.jpg'),
   MealModel(name: 'Meat + rice with vegetables', type: 'Lunch', day: 'Wednesday', calories: 400, imageUrl: 'assets/image/lunch.jpg'),
