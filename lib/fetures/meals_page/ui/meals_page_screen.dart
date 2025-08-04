@@ -1,6 +1,7 @@
 import 'package:be_happy/core/widjets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../shopping_list_Page/data/shopping_items.dart';
 import '../data/meal_model.dart';
 
 class MealsPageScreen extends StatelessWidget {
@@ -32,14 +33,46 @@ class MealsPageScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Meal Details', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              Center(child: const Text('Meal Details', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
               const SizedBox(height: 16),
               Image.asset(meal!.imageUrl ?? 'assets/image/breakfast.jpg',height: 200, width: double.infinity, fit: BoxFit.cover),
               const SizedBox(height: 16),
-              Text('Name of Meal: ${meal.name ?? 'Boiled eggs + salad + slice of toast'}', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+              Text('Name of Meal: '
+                  '\n${meal.name ?? 'Boiled eggs + salad + slice of toast'}', ),
               const SizedBox(height: 8),
-              Text('Calories: ${meal.calories} Cal'),
+              Text('Calories: \n${meal.calories} Cal'),
               const SizedBox(height: 16),
+              Text('Ingredients:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              const SizedBox(height: 8),
+              ...meal.ingredients.map((ingredient) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text("• $ingredient", style: TextStyle(fontSize: 14)),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.add_shopping_cart, size: 20),
+                        onPressed: () {
+                          if (!shoppingItems.contains(ingredient)) {
+                            shoppingItems.add(ingredient);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("$ingredient added to shopping list")),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("$ingredient already exists")),
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+
 
             ],
           ),

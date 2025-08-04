@@ -35,7 +35,7 @@ class PlanPageScreen extends StatelessWidget {
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: 300,
+                      height:   250,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: mealsOfDay.length,
@@ -54,5 +54,5 @@ class PlanPageScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  }}
+
